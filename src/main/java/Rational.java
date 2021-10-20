@@ -26,25 +26,33 @@ public class Rational {
     // (When you write the simplify method later on, you should
     // also call it in this method to return the simplified result)
     public static Rational add(Rational r, Rational s) {
+        int n = r.numerator*s.denominator+r.denominator*s.numerator;
+        int b = r.denominator * s.denominator;
         // REPLACE WITH YOUR CODE HERE
-        return null;
+        return simplify(new Rational(n,b));
     }
 
     // This method takes two Rationals, subtracts thems up, 
     // and returns a Rational equal to the difference
     public static Rational subtract(Rational r, Rational s) {
+        int n = r.numerator*s.denominator-r.denominator*s.numerator;
+        int b = r.denominator * s.denominator;
         // REPLACE WITH YOUR CODE HERE
-        return null;
+        return simplify(new Rational(n,b));
     }
     
     public static Rational multiply(Rational r, Rational s) {
+        int n = r.numerator*s.numerator;
+        int b = r.denominator * s.denominator;
         // REPLACE WITH YOUR CODE HERE
-        return null;
+        return simplify(new Rational(n,b));
     }
     
     public static Rational divide(Rational r, Rational s) {
+        int n = r.numerator*s.denominator;
+        int b = r.denominator * s.numerator;
         // REPLACE WITH YOUR CODE HERE
-        return null;
+        return simplify(new Rational(n,b));
     }
 
     // Finds the greatest common factor between a and b
@@ -62,7 +70,13 @@ public class Rational {
     //      simplify(1/2) => 1/2
     public static Rational simplify(Rational r) {
         // REPLACE WITH YOUR CODE HERE
-        return null;
+        if (r.numerator % 2 == 0 && r.denominator % 2 == 0) {
+            return simplify(new Rational(r.numerator/2, r.denominator/2));
+        }
+        if (r.numerator % 3 == 0 && r.denominator % 3 == 0) {
+            return simplify(new Rational(r.numerator/3, r.denominator/3));
+        }
+        return r;
     }
 
     // This following method is NOT static, we'll talk about it next class!
